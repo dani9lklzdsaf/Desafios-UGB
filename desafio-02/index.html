@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Élan Vert | Gastronomia Vegana Premium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+    }
+    .menu-link { position: relative; }
+    .menu-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: #000;
+      transition: width 0.3s ease;
+    }
+    .menu-link:hover::after { width: 100%; }
+
+    /* estilo botão Próximo item */
+    #nextDishBtn {
+      background-color: #1d4ed8;
+      color: white;
+      border: 2px solid #1d4ed8;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      margin-left: 1rem;
+      transition: all 0.3s ease;
+    }
+    #nextDishBtn:hover {
+      background-color: white;
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Header -->
+  <header class="py-6 px-4 md:px-8 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center">
+        <i class="fas fa-leaf text-2xl mr-2 text-green-600"></i>
+        <h1 class="text-2xl font-light tracking-wider">ÉLAN <span class="font-medium">VERT</span></h1>
+      </div>
+      <nav>
+        <ul class="flex space-x-8">
+          <li><a href="#" class="menu-link text-sm uppercase tracking-wider">Home</a></li>
+          <li><a href="#" class="menu-link text-sm uppercase tracking-wider">Cardápio</a></li>
+          <li><a href="#" class="menu-link text-sm uppercase tracking-wider">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-12 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-light text-center mb-12 tracking-wider">NOSSO <span class="font-medium">CARDÁPIO</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- seus cards aqui -->
+      </div>
+    </div>
+
+    <!-- Nova seção: Descubra Sabores -->
+    <div class="max-w-6xl mx-auto text-center mt-20">
+      <h2 class="text-3xl font-light text-center mb-6 tracking-wider">
+        DESCUBRA <span class="font-medium">NOVOS SABORES</span>
+      </h2>
+
+      <!-- Botões -->
+      <div class="flex justify-center mb-8">
+        <button id="fetchDishBtn"
+                class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition">
+          Sugerir prato
+        </button>
+        <button id="nextDishBtn">Próximo item</button>
+      </div>
+
+      <!-- Área do resultado -->
+      <div id="dishResult" class="mt-8 flex flex-col items-center justify-center"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#2c5899] text-white py-12 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About -->
+        <div>
+          <h3 class="text-lg font-medium mb-4 tracking-wider">SOBRE NÓS</h3>
+          <p class="text-sm text-gray-300 mb-4">Élan Vert reimagina a gastronomia vegetal com elegância e sofisticação. Ingredientes selecionados, técnicas refinadas e apresentação impecável.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-medium mb-4 tracking-wider">CONTATO</h3>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-sm"></i><span>Rua das Acácias, 123<br>Jardim Europa - São Paulo/SP</span></li>
+            <li class="flex items-center"><i class="fas fa-phone-alt mr-3 text-sm"></i><span>(11) 1234-5678</span></li>
+            <li class="flex items-center"><i class="fas fa-envelope mr-3 text-sm"></i><span>contato@elanvert.com.br</span></li>
+          </ul>
+        </div>
+        <!-- Hours -->
+        <div>
+          <h3 class="text-lg font-medium mb-4 tracking-wider">HORÁRIOS</h3>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li class="flex justify-between"><span>Segunda - Sexta</span> <span>12h - 22h</span></li>
+            <li class="flex justify-between"><span>Sábado</span> <span>12h - 00h</span></li>
+            <li class="flex justify-between"><span>Domingo</span> <span>12h - 18h</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+        <p>&copy; 2023 Élan Vert. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script da API -->
+  <script>
+    const dishList = ["Arrabiata", "Tacos", "Pancakes", "Pad Thai", "Tomato Soup"];
+    let currentIndex = 0;
+    const resultDiv = document.getElementById("dishResult");
+
+    // Botão aleatório
+    document.getElementById("fetchDishBtn").addEventListener("click", async () => {
+      resultDiv.innerHTML = "<p class='text-gray-600'>Carregando prato...</p>";
+      try {
+        const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+        const data = await response.json();
+        const meal = data.meals[0];
+        resultDiv.innerHTML = `
+          <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="w-64 h-64 object-cover rounded-lg mb-4 shadow-md">
+          <h3 class="text-2xl font-semibold mb-2">${meal.strMeal}</h3>
+          <p class="text-gray-700 max-w-xl">${meal.strInstructions.substring(0, 200)}...</p>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = "<p class='text-red-600'>Erro ao carregar prato.</p>";
+      }
+    });
+
+    // Botão próximo
+    document.getElementById("nextDishBtn").addEventListener("click", async () => {
+      resultDiv.innerHTML = "<p class='text-gray-600'>Carregando prato...</p>";
+      try {
+        const dishName = dishList[currentIndex];
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${dishName}`);
+        const data = await response.json();
+
+        if (data.meals) {
+          const meal = data.meals[0];
+          resultDiv.innerHTML = `
+            <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="w-64 h-64 object-cover rounded-lg mb-4 shadow-md">
+            <h3 class="text-2xl font-semibold mb-2">${meal.strMeal}</h3>
+            <p class="text-gray-700 max-w-xl">${meal.strInstructions.substring(0, 200)}...</p>
+          `;
+        } else {
+          resultDiv.innerHTML = "<p class='text-red-600'>Nenhum prato encontrado.</p>";
+        }
+
+        currentIndex = (currentIndex + 1) % dishList.length;
+      } catch (error) {
+        resultDiv.innerHTML = "<p class='text-red-600'>Erro ao carregar prato.</p>";
+      }
+    });
+  </script>
+</body>
+</html>
